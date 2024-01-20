@@ -1,4 +1,7 @@
-﻿Folder.GetFiles Folder: $'''%ProjectPath%\\nye-pdf-filer''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> newPdfFiles
+﻿Folder.GetFiles Folder: $'''%ProjectPath%\\nye-pdf-filer''' FileFilter: $'''*.pdf''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> newPdfFiles
+IF (File.IfFile.Exists File: $'''%ProjectPath%\\temp-txt-files\\.gitkeep''') THEN
+    File.Delete Files: $'''%ProjectPath%\\temp-txt-files\\.gitkeep'''
+END
 LOOP FOREACH CurrentPdf IN newPdfFiles
     Pdf.ExtractTextFromPDF.ExtractText PDFFile: CurrentPdf DetectLayout: False ExtractedText=> ExtractedPDFText
     File.WriteText File: $'''%ProjectPath%\\temp-txt-files\\%CurrentPdf.Name%.txt''' TextToWrite: ExtractedPDFText AppendNewLine: False IfFileExists: File.IfFileExists.Overwrite Encoding: File.FileEncoding.UTF8
