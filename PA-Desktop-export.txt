@@ -1,0 +1,12 @@
+﻿Folder.GetFiles Folder: $'''%ProjectPath%\\nye-pdf-filer''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> newPdfFiles
+LOOP FOREACH CurrentPdf IN newPdfFiles
+    Pdf.ExtractTextFromPDF.ExtractText PDFFile: CurrentPdf DetectLayout: False ExtractedText=> ExtractedPDFText
+    File.WriteText File: $'''%ProjectPath%\\temp-txt-files\\%CurrentPdf.Name%.txt''' TextToWrite: ExtractedPDFText AppendNewLine: False IfFileExists: File.IfFileExists.Overwrite Encoding: File.FileEncoding.UTF8
+    File.Move Files: CurrentPdf Destination: $'''%ProjectPath%\\gamle-pdf-filer''' IfFileExists: File.IfExists.Overwrite MovedFiles=> MovedOldFile
+END
+Cmd.Open.Open Directory: ProjectPath Session=> CmdSession
+Cmd.Write Session: CmdSession Command: $'''node .\\exstractData.js''' SendEnter: True
+Cmd.WaitForText Session: CmdSession Text: $'''Alle data er blevet samlet i output.csv''' IsRegEx: False IgnoreCase: True Timeout: 0
+Cmd.Close Session: CmdSession
+Folder.GetFiles Folder: $'''%ProjectPath%\\temp-txt-files''' FileFilter: $'''*.txt''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> TempTxtFiles
+File.Delete Files: TempTxtFiles
