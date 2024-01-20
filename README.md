@@ -23,7 +23,7 @@ For at opsætte flowet:
 2. Kopier teksten fra filen `PA-Desktop-export.txt`, som er i denne mappe, og indsæt med ctrl-Z i hovedvinduet på Power Automate.
 3. Et flow-forløb vil blive oprettet fra det indsatte. Ignorer evt. fejlmeddelelser om manglende variabler.
 4. Tryk på plustegnet under "Input/output-variabler" og vælg input i dropdown.
-5. Udfyld både Variabelnavn og Eksternt navn med: `ProjectPath`, Datatype: Tekst, Standardværdi: Absolut til denne mappe.
+5. Udfyld både Variabelnavn og Eksternt navn med: `ProjectPath`, Datatype: Tekst, Standardværdi: Absolut sti til denne mappe. (fx: C:\Users\Claus\Desktop\extract-data-from-pdf)
 6. Tryk gem og fejlmedelelserne forsvinder.
 7. Gem Flowet.
 
