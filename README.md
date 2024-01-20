@@ -20,7 +20,7 @@ Denne pakke indeholder en mappe/filstruktur som skal bibeholdes, for at PAD-flow
 For at opsætte flowet:
 
 1. Tryk "Nyt flow" og giv det et navn, for at oprette flow.
-2. Kopier teksten fra filen `PA-Desktop-export.txt`, som er i denne mappe, og indsæt med ctrl-Z i hovedvinduet på Power Automate.
+2. Kopier teksten fra filen `PA-Desktop-export.txt`, som er i denne mappe, og indsæt med ctrl-Z i hovedvinduet på det nye flow i Power Automate.
 3. Et flow-forløb vil blive oprettet fra det indsatte. Ignorer evt. fejlmeddelelser om manglende variabler.
 4. Tryk på plustegnet under "Input/output-variabler" og vælg input i dropdown.
 5. Udfyld både Variabelnavn og Eksternt navn med: `ProjectPath`, Datatype: Tekst, Standardværdi: Absolut sti til denne mappe. (fx: C:\Users\Claus\Desktop\extract-data-from-pdf)
