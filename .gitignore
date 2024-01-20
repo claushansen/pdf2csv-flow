@@ -1,3 +1,6 @@
+# Ignore all .txt .pdf .csv files
 *.txt
 *.pdf
 *.csv
+# But track PA-Desktop-export.txt
+!PA-Desktop-export.txt
